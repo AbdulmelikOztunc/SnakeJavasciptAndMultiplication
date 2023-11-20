@@ -99,7 +99,7 @@
         Tarayıcınız audio elementini desteklemiyor.
     </audio>
     <audio id="donus">
-        <source src="ses/donus2.wav" type="audio/mp3">
+        <source src="ses/donus3.wav" type="audio/mp3">
         Tarayıcınız audio elementini desteklemiyor.
     </audio>
    
@@ -279,18 +279,22 @@
                     if (deltaX > 0) {
                         nextX = 1;
                         nextY = 0;
+                        playturnsound() 
                     } else if (deltaX < 0 && nextX !== 1) {
                         nextX = -1;
                         nextY = 0;
+                        playturnsound() 
                     }
                 } else {
                     // Vertical swipe
                     if (deltaY > 0 && nextY !== -1) {
                         nextX = 0;
                         nextY = 1;
+                        playturnsound() 
                     } else if (deltaY < 0 && nextY !== 1) {
                         nextX = 0;
                         nextY = -1;
+                        playturnsound() 
                     }
                 }
             }
