@@ -368,7 +368,8 @@
                 } 
             function playturnsound() {
                     turnsound.currentTime = 0; // Ses dosyasını başa sar
-                    turnsound.play();
+                    turnsound.volume = 0.5;
+                    turnsound.play();                   
                 } 
             function playyanlisyeme() {
                     snakeEatSound.currentTime = 0; // Ses dosyasını başa sar
@@ -725,6 +726,7 @@
             } 
         function playturnsound() {
                 turnsound.currentTime = 0; // Ses dosyasını başa sar
+                turnsound.volume = 0.5;                
                 turnsound.play();
             } 
         function playyanlisyeme() {
