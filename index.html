@@ -67,6 +67,9 @@
                 background-color:rgba(103, 103, 103, 0.3);
                 z-index: 35;
             }
+            .start{
+                font-size:medium;
+            }
     </style>
 </head>
 <body>
@@ -611,29 +614,40 @@
                 ctx.closePath();
            }
             // kullanıcı girişi
-        function klavyeTusBasildi(e) {
-            sakeOverSoundStart=true;
+        function klavyeTusBasildi(e) {           
            if(ilk==1){
             switch (e.keyCode) {
                 case 37: // sol
                     nextX = -1;
                     nextY = 0;
+                    sakeOverSoundStart=true;
                     break;
                 case 38: // yukarı
                     nextX = 0;
                     nextY = -1;
+                    sakeOverSoundStart=true;
                     break;
                 case 39: // sağ
                     nextX = 1;
                     nextY = 0;
+                    sakeOverSoundStart=true;
                     break;
                 case 40: // aşağı
                     nextX = 0;
                     nextY = 1;
+                    sakeOverSoundStart=true;
                     break;
+                case 13://enter
+                    nextX = 0;
+                    nextY = -1;
+                    sakeOverSoundStart=true;
+                case 32://space   
+                    nextX = 0;
+                    nextY = -1;
+                    sakeOverSoundStart=true;
                 }
                 ilk++;
-                }else{
+                }else{                
                 // Yılanın şu andaki hareket yönünü kontrol et
                 // Yatay hareket
                 if (nextX === 0) {
@@ -808,7 +822,7 @@
                     gulenyuz=0;
                     document.getElementById("smile").innerHTML += "<i class='fa-solid fa-face-frown text-danger' style='width:27px'></i> ";
                 }
-                function gameOver() {
+        function gameOver() {
                     clearInterval(gameInterval); // Oyun döngüsünü durdur
                     document.getElementById("gameOver").innerHTML = "Game Over! </br> Puanınız: " + puan;
                     document.getElementById("gameOver").style.zIndex=101;
