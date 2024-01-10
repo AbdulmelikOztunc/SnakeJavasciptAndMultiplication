@@ -358,17 +358,21 @@
         function dokunmaBitti(e) {
           var deltaX = endX - startX;
           var deltaY = endY - startY;
-          ciz();
+         
           if (Math.abs(deltaX) > Math.abs(deltaY)) {
             // Horizontal swipe
             if (deltaX > 0) {
               nextX = 1;
               nextY = 0;
               playturnsound();
+              setTimeout(() => {}, 200);
+              ciz();
             } else if (deltaX < 0 && nextX !== 1) {
               nextX = -1;
               nextY = 0;
               playturnsound();
+              setTimeout(() => {}, 200);
+              ciz();
             }
           } else {
             // Vertical swipe
@@ -376,10 +380,14 @@
               nextX = 0;
               nextY = 1;
               playturnsound();
+              setTimeout(() => {}, 200);
+              ciz();
             } else if (deltaY < 0 && nextY !== 1) {
               nextX = 0;
               nextY = -1;
               playturnsound();
+              setTimeout(() => {}, 200);
+              ciz();
             }
           }
         }
