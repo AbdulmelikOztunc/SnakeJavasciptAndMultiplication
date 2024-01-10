@@ -111,7 +111,7 @@
         ></div>
         <div class="d-flex mb-2">
           <div class="question text-info rounded-3 p-1" id="questionDiv"></div>
-          <div id="smile" class="p-0" style="height: 27px"></div>
+          <div id="smile" class="pt-1 ps-2" style="height: 27px"></div>
         </div>
         <div
           class="position-absolute p-0 text-info"
@@ -120,9 +120,9 @@
           Puan
         </div>
         <div
-          class="position-absolute end-0 text-info rounded-circle px-3 bg-gradient h2"
+          class="position-absolute end-0 text-info rounded-circle px-3 bg-gradient"
           id="puan"
-          style="bottom: 11px"
+          style="bottom: 20px"
         >
           0
         </div>
@@ -130,12 +130,8 @@
           class="text-info d-block d-md-none position-absolute rounded-1 p-1 text-center"
           id="MobilHatirlatma"
         >
-          <img src="keys.svg" width="100px" /><button
-            class="rounded-3"
-            onclick="playmobile()"
-          >
-            Play
-          </button>
+          <img src="keys.svg" width="100px" />
+          <button class="rounded-3" onclick="playmobile()">Play</button>
         </div>
       </div>
       <canvas
@@ -199,7 +195,7 @@
           document.addEventListener("touchend", dokunmaBitti);
 
           // saniyede X kere çiz
-          var x = 5;
+          var x = 3;
           gameInterval1 = setInterval(ciz, 1000 / x);
         };
         // oyun dünyası
@@ -368,10 +364,14 @@
             if (deltaX > 0) {
               nextX = 1;
               nextY = 0;
+              setTimeout(() => {}, 200);;//kendini yakıyordu hızlı sağ ve ardından yukarı yapınca  bunu eklemek zorunda kaldım
+              ciz();
               playturnsound();
             } else if (deltaX < 0 && nextX !== 1) {
               nextX = -1;
               nextY = 0;
+              setTimeout(() => {}, 200);
+              ciz();
               playturnsound();
             }
           } else {
@@ -379,10 +379,14 @@
             if (deltaY > 0 && nextY !== -1) {
               nextX = 0;
               nextY = 1;
+              setTimeout(() => {}, 200);
+              ciz();
               playturnsound();
             } else if (deltaY < 0 && nextY !== 1) {
               nextX = 0;
               nextY = -1;
+              setTimeout(() => {}, 200);
+              ciz();
               playturnsound();
             }
           }
@@ -470,12 +474,12 @@
         }
 
         function elmayiyakaladi(hangielma) {
-            let state = false;
-            //eğer doğru ise yeni soru ve option oluşturuldu 
+          let state = false;
+          //eğer doğru ise yeni soru ve option oluşturuldu
           if (hangielma == 0) {
             state = true;
             playAppleSound();
-           randomQuestion = getRandomQuestion();
+            randomQuestion = getRandomQuestion();
             do {
               var randomQuestionfalse = getRandomQuestion();
             } while (randomQuestion.answer == randomQuestionfalse.answer);
@@ -485,7 +489,7 @@
           // Soruyu ekrana yazdır
           document.getElementById("questionDiv").textContent =
             randomQuestion.question + "=?";
-            
+
           for (let index = 0; index < 2; index++) {
             elmalar[index].x = Math.floor(Math.random() * gridSize);
             elmalar[index].y = Math.floor(Math.random() * gridSize);
@@ -562,7 +566,7 @@
           ctx = canvas.getContext("2d");
           document.addEventListener("keydown", klavyeTusBasildi);
           // saniyede X kere çiz
-          var x = 5;
+          var x = 3;
           gameInterval = setInterval(ciz, 1000 / x);
         };
 
@@ -739,37 +743,41 @@
             // Yılanın şu andaki hareket yönünü kontrol et
             // Yatay hareket
             if (nextX === 0) {
-              setTimeout(function () {
-                switch (e.keyCode) {
-                  case 37: // sol
-                    nextX = -1;
-                    nextY = 0;
-                    playturnsound();
-                    break;
-                  case 39: // sağ
-                    nextX = 1;
-                    nextY = 0;
-                    playturnsound();
-                    break;
-                }
-              }, 120);
+              switch (e.keyCode) {
+                case 37: // sol
+                  nextX = -1;
+                  nextY = 0;
+                  playturnsound();
+                  setTimeout(() => {}, 200);
+                  ciz();
+                  break;
+                case 39: // sağ
+                  nextX = 1;
+                  nextY = 0;
+                  playturnsound();
+                  setTimeout(() => {}, 200);
+                  ciz();
+                  break;
+              }
             }
             // Dikey hareket
             else if (nextY === 0) {
-              setTimeout(function () {
-                switch (e.keyCode) {
-                  case 38: // yukarı
-                    nextX = 0;
-                    nextY = -1;
-                    playturnsound();
-                    break;
-                  case 40: // aşağı
-                    nextX = 0;
-                    nextY = 1;
-                    playturnsound();
-                    break;
-                }
-              }, 120);
+              switch (e.keyCode) {
+                case 38: // yukarı
+                  nextX = 0;
+                  nextY = -1;
+                  playturnsound();
+                  setTimeout(() => {}, 200);
+                  ciz();
+                  break;
+                case 40: // aşağı
+                  nextX = 0;
+                  nextY = 1;
+                  playturnsound();
+                  setTimeout(() => {}, 200);
+                  ciz();
+                  break;
+              }
             }
           }
         }
@@ -845,7 +853,7 @@
           snakeOver.play();
         }
         function updateUI() {
-            randomQuestion = getRandomQuestion();
+          randomQuestion = getRandomQuestion();
           // Soruyu ekrana yazdır
           document.getElementById("questionDiv").textContent =
             randomQuestion.question + "=?";
@@ -854,22 +862,22 @@
           options = [randomQuestion.answer, getRandomQuestion().answer];
         }
 
-        function elmayiyakaladi(hangielma) {          
+        function elmayiyakaladi(hangielma) {
           let state = false;
           if (hangielma == 0) {
             state = true;
             playAppleSound();
-           randomQuestion = getRandomQuestion();
+            randomQuestion = getRandomQuestion();
             do {
               var randomQuestionfalse = getRandomQuestion();
-            } while (randomQuestion.answer == randomQuestionfalse.answer);            
-          // Cevapları olşutur
+            } while (randomQuestion.answer == randomQuestionfalse.answer);
+            // Cevapları olşutur
             options = [randomQuestion.answer, randomQuestionfalse.answer];
           }
           // Soruyu ekrana yazdır
           document.getElementById("questionDiv").textContent =
             randomQuestion.question + "=?";
-         
+
           for (let index = 0; index < 2; index++) {
             elmalar[index].x = Math.floor(Math.random() * gridSize);
             elmalar[index].y = Math.floor(Math.random() * gridSize);
@@ -884,6 +892,7 @@
 
         function updateUItrue() {
           puan = puan + 2 ** carpi2;
+
           document.getElementById("puan").textContent = puan;
           if (gulenyuz == 0) {
             document.getElementById("smile").innerHTML = "";
