@@ -353,6 +353,7 @@
           var touch = e.touches[e.touches.length - 1];
           endX = touch.clientX;
           endY = touch.clientY;
+              ciz();
         }
 
         function dokunmaBitti(e) {
@@ -364,14 +365,10 @@
             if (deltaX > 0) {
               nextX = 1;
               nextY = 0;
-              setTimeout(() => {}, 200);;//kendini yakıyordu hızlı sağ ve ardından yukarı yapınca  bunu eklemek zorunda kaldım
-              ciz();
               playturnsound();
             } else if (deltaX < 0 && nextX !== 1) {
               nextX = -1;
               nextY = 0;
-              setTimeout(() => {}, 200);
-              ciz();
               playturnsound();
             }
           } else {
@@ -379,14 +376,10 @@
             if (deltaY > 0 && nextY !== -1) {
               nextX = 0;
               nextY = 1;
-              setTimeout(() => {}, 200);
-              ciz();
               playturnsound();
             } else if (deltaY < 0 && nextY !== 1) {
               nextX = 0;
               nextY = -1;
-              setTimeout(() => {}, 200);
-              ciz();
               playturnsound();
             }
           }
