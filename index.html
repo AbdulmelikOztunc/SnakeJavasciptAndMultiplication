@@ -356,10 +356,9 @@
         }
 
         function dokunmaBitti(e) {
-          ciz();
           var deltaX = endX - startX;
           var deltaY = endY - startY;
-
+          ciz();
           if (Math.abs(deltaX) > Math.abs(deltaY)) {
             // Horizontal swipe
             if (deltaX > 0) {
